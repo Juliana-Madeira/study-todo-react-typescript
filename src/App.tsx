@@ -10,13 +10,33 @@ const App = () => {
     {id: 2, description: 'Comprar um bolo na padaria', done: true},
   ])
 
+  const handleAddTask = (task: string) => {
+    let newList = [...list]
+    newList.push({
+      id: list.length + 1,
+      description: task,
+      done: false
+    })
+    setList(newList)
+  }
+
+  const handleTaskChange = (id: number, done: boolean) => {
+    let newList = [...list]
+    for(let i in newList){
+      if(newList[i].id === id){
+        newList[i].done = done
+      }
+    }
+    setList(newList)
+  }
+
   return (
     <Container>
       <Area>
         <Header>Lista de Tarefas</Header >
-        <AddItem/>
+        <AddItem handleAddTask={handleAddTask}/>
         {list.map((item, index)=>(
-          <ListItem key={index} item={item}/>
+          <ListItem key={index} item={item} onChange={handleTaskChange}/>
         ))}
       </Area>
     </Container>
