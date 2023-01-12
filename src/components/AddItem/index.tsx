@@ -1,7 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Container } from '../AddItem/styles';
 
 export const AddItem = () => {
   return (
-    <div>Add Item</div>
+    <Container>
+        <div className='image'>➕</div>     {/*emoji plus no goole*/}
+        <input 
+            type="text" 
+            placeholder='Adicione uma tarefa'
+        />
+    </Container>
   )
 }
